@@ -1,4 +1,4 @@
-[English](README.md) | [Français](README.fr.md) | [Русский](README.ru.md) | [简体中文](README.zh-CN.md)
+[English](README.md) | [Français](README.fr.md) | [Русский](README.ru.md) | [简体中文](README.zh_cn.md)
 
 # Addon Manager
 Allows players to toggle or reload addons and access their settings (if supported).
