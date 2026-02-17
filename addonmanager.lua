@@ -43,11 +43,9 @@ local function CreateManagerWindow()
   local slider         = sliderFrame.slider ---@type Slider
 
   window:SetSounds("bag")
-  window:SetCloseOnEscape(true)
   window:EnableHidingIsRemove(true)
   window:SetAlphaAnimation(0, 1, .1, .1)
   window:SetStartAnimation(true, true)
-  window:SetUILayer("system")
 
   titleBar:SetHandler("OnDragStart", function ()
     window:StartMoving()
@@ -56,6 +54,30 @@ local function CreateManagerWindow()
   titleBar:SetHandler("OnDragStop", function ()
     window:StopMovingOrSizing()
     CorrectWidgetScreenPos(window)
+  end)
+
+  window.isPinned = false
+
+  function titleBar:SetPin(pin)
+    if pin then
+      titleBar.titleStyle:SetColorByKey("red")
+      window:SetUILayer("system")
+    else
+      titleBar.titleStyle:SetColorByKey("title")
+      window:SetUILayer("normal")
+    end
+
+    window:Raise()
+    window:SetCloseOnEscape(not pin)
+  end
+
+  titleBar:SetPin(false)
+
+  titleBar:SetHandler("OnClick", function (self, mouseButton, doubleClick, keyModifier)
+    if doubleClick then
+      window.isPinned = not window.isPinned
+      titleBar:SetPin(window.isPinned)
+    end
   end)
 
   closeButton:SetHandler("OnClick", function ()
