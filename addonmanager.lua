@@ -122,6 +122,12 @@ local function CreateManagerWindow()
     end)
 
     refreshButton:SetHandler("OnClick", function ()
+      ADDON:SetAddonEnable(addon.name, false)
+      ADDON:SaveAddonInfos()
+      ADDON:ReloadAddon(addon.name)
+
+      ADDON:SetAddonEnable(addon.name, true)
+      ADDON:SaveAddonInfos()
       ADDON:ReloadAddon(addon.name)
     end)
   end

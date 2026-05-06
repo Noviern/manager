@@ -6,6 +6,12 @@ Double-cliquez sur la barre de titre pour épingler la fenêtre au premier plan 
 
 ![Gestionnaire d'extensions](https://i.imgur.com/C4DWrRA.png)
 
+**Remarque :**
+
+En raison d'un bug dans l'API des addons, tout addon qui crée un bouton dans le
+menu Échap ajoutera un nouveau bouton à chaque rechargement ou activation, sans
+supprimer le précédent.
+
 **AVERTISSEMENT : Le rechargement peut faire planter le client**
 
 Le rechargement des addons est généralement sûr mais **peut provoquer des plantages** dans certaines circonstances :

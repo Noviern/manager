@@ -6,6 +6,12 @@ Double click the title bar to pin the window to the top UI layer.
 
 ![Addon Manager](https://i.imgur.com/C4DWrRA.png)
 
+**Notice:**
+
+Due to a bug in the addon API, any addon that creates a button in the escape
+menu will add a new button every time it is reloaded or toggled on, without
+removing the previous one.
+
 **WARNING: Reloading can crash the client**
 
 Addon reloads are generally safe but **can cause crashes** in certain circumstances:
