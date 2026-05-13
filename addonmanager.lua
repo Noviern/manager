@@ -122,6 +122,7 @@ local function CreateManagerWindow()
     end)
 
     refreshButton:SetHandler("OnClick", function ()
+      ADDON:SaveData("last_reload", { addonName = addon.name })
       ADDON:SetAddonEnable(addon.name, false)
       ADDON:SaveAddonInfos()
       ADDON:ReloadAddon(addon.name)
@@ -129,6 +130,7 @@ local function CreateManagerWindow()
       ADDON:SetAddonEnable(addon.name, true)
       ADDON:SaveAddonInfos()
       ADDON:ReloadAddon(addon.name)
+      ADDON:SaveData("last_reload", { })
     end)
   end
 
@@ -160,3 +162,11 @@ end
 
 ADDON:RegisterContentTriggerFunc(UIC_MANAGER, ToggleManagerWindow)
 ADDON:AddEscMenuButton(5, UIC_MANAGER, "optimizer", locale.addon.name)
+
+local saveData = ADDON:LoadData("last_reload")
+
+if saveData and saveData.addonName then
+  ADDON:SetAddonEnable(saveData.addonName, true)
+  ADDON:SaveAddonInfos()
+  ADDON:ReloadAddon(saveData.addonName)
+end
